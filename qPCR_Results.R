@@ -1,18 +1,19 @@
 library("readxl")
 
-setwd("F:")
+setwd("D:/")
 # Get all files that end with .xlsx
 # files <- list.files(pattern = ".xlsx")
 
-# get all sheets in "2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx"
-sheet_names <- excel_sheets("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx")
+# get all sheets in "qPCR_Results.xlsx"
+sheet_names <- excel_sheets("qPCR_Results.xlsx")
 # Keep names that contain "REP"
 sheet_names <- sheet_names[grep("REP", sheet_names)]
 sheet_names
 
-# # > sheet_names
-# [1] "m_Msi1 REP"    "m_Lgr5 REP"    "m_Bmi1 REP"    "m_Cyp24a1 REP"
-# [5] "m_Bcl2 REP"    "m_Ki67 REP"    "m_Caspn3 REP"
+# > sheet_names
+#  [1] "m_Msi1 REP"      "m_Lgr5 REP"      "m_Bmi1 REP"      "m_Cyp24a1 REP"
+#  [5] "m_Bcl2 REP"      "m_Ki67 REP"      "m_Caspn3 REP"    "m_Fgfbp1 REP"
+#  [9] "m_Mex3a REP"     "m_Mex3a REP (2)"
 
 # Groups for each sample in rows
 # NO DSS
@@ -23,13 +24,16 @@ sheet_names
 # DSS MAC
 
 
-m_MsiREP_2_neg_del_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Msi1 REP", range = "AI10:AQ16")
-m_Lgr5REP_2_neg_del_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Lgr5 REP", range = "AI10:AQ16")
-m_Bmi1REP_2_neg_del_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Bmi1 REP", range = "AI10:AQ16")
-m_Cyp24a1REP_2_neg_del_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Cyp24a1 REP", range = "AI10:AQ16")
-m_Bcl2REP_2_neg_del_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Bcl2 REP", range = "AI10:AQ16")
-m_Ki67REP_2_neg_del_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Ki67 REP", range = "AI10:AQ16")
-m_Caspn3REP_2_neg_del_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Caspn3 REP", range = "AI10:AQ16")
+m_MsiREP_2_neg_del_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Msi1 REP", range = "AI10:AQ16")
+m_Lgr5REP_2_neg_del_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Lgr5 REP", range = "AI10:AQ16")
+m_Bmi1REP_2_neg_del_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Bmi1 REP", range = "AI10:AQ16")
+m_Cyp24a1REP_2_neg_del_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Cyp24a1 REP", range = "AI10:AQ16")
+m_Bcl2REP_2_neg_del_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Bcl2 REP", range = "AI10:AQ16")
+m_Ki67REP_2_neg_del_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Ki67 REP", range = "AI10:AQ16")
+m_Caspn3REP_2_neg_del_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Caspn3 REP", range = "AI10:AQ16")
+m_Fgfbp1REP_2_neg_del_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Fgfbp1 REP", range = "AI10:AQ16")
+m_Mex3aREP_2_neg_del_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Mex3a REP", range = "AI10:AQ16")
+m_Mex3aREP_2_neg_del_Ct_2 <- read_excel("qPCR_Results.xlsx", sheet = "m_Mex3a REP (2)", range = "AI10:AQ16")
 
 # For each of neg_del_Ct, make them dfs then add rownames
 m_MsiREP_2_neg_del_Ct <- as.data.frame(m_MsiREP_2_neg_del_Ct)
@@ -39,6 +43,9 @@ m_Cyp24a1REP_2_neg_del_Ct <- as.data.frame(m_Cyp24a1REP_2_neg_del_Ct)
 m_Bcl2REP_2_neg_del_Ct <- as.data.frame(m_Bcl2REP_2_neg_del_Ct)
 m_Ki67REP_2_neg_del_Ct <- as.data.frame(m_Ki67REP_2_neg_del_Ct)
 m_Caspn3REP_2_neg_del_Ct <- as.data.frame(m_Caspn3REP_2_neg_del_Ct)
+m_Fgfbp1REP_2_neg_del_Ct <- as.data.frame(m_Fgfbp1REP_2_neg_del_Ct)
+m_Mex3aREP_2_neg_del_Ct <- as.data.frame(m_Mex3aREP_2_neg_del_Ct)
+m_Mex3aREP_2_neg_del_Ct_2 <- as.data.frame(m_Mex3aREP_2_neg_del_Ct_2)
 
 rownames(m_MsiREP_2_neg_del_Ct) <- c("NO DSS", "DSS", "DSS CYP", "DSS 1981", "DSS ALDH", "DSS MAC")
 rownames(m_Lgr5REP_2_neg_del_Ct) <- c("NO DSS", "DSS", "DSS CYP", "DSS 1981", "DSS ALDH", "DSS MAC")
@@ -47,23 +54,32 @@ rownames(m_Cyp24a1REP_2_neg_del_Ct) <- c("NO DSS", "DSS", "DSS CYP", "DSS 1981",
 rownames(m_Bcl2REP_2_neg_del_Ct) <- c("NO DSS", "DSS", "DSS CYP", "DSS 1981", "DSS ALDH", "DSS MAC")
 rownames(m_Ki67REP_2_neg_del_Ct) <- c("NO DSS", "DSS", "DSS CYP", "DSS 1981", "DSS ALDH", "DSS MAC")
 rownames(m_Caspn3REP_2_neg_del_Ct) <- c("NO DSS", "DSS", "DSS CYP", "DSS 1981", "DSS ALDH", "DSS MAC")
+rownames(m_Fgfbp1REP_2_neg_del_Ct) <- c("NO DSS", "DSS", "DSS CYP", "DSS 1981", "DSS ALDH", "DSS MAC")
+rownames(m_Mex3aREP_2_neg_del_Ct) <- c("NO DSS", "DSS", "DSS CYP", "DSS 1981", "DSS ALDH", "DSS MAC")
+rownames(m_Mex3aREP_2_neg_del_Ct_2) <- c("NO DSS", "DSS", "DSS CYP", "DSS 1981", "DSS ALDH", "DSS MAC")
 
 
-m_MsiREP_GAPDH <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Msi1 REP", range = "B10:K16")
-m_Lgr5REP_GAPDH <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Lgr5 REP", range = "B10:K16")
-m_Bmi1REP_GAPDH <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Bmi1 REP", range = "B10:K16")
-m_Cyp24a1REP_GAPDH <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Cyp24a1 REP", range = "B10:K16")
-m_Bcl2REP_GAPDH <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Bcl2 REP", range = "B10:K16")
-m_Ki67REP_GAPDH <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Ki67 REP", range = "B10:K16")
-m_Caspn3REP_GAPDH <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Caspn3 REP", range = "B10:K16")
+m_MsiREP_GAPDH <- read_excel("qPCR_Results.xlsx", sheet = "m_Msi1 REP", range = "B10:K16")
+m_Lgr5REP_GAPDH <- read_excel("qPCR_Results.xlsx", sheet = "m_Lgr5 REP", range = "B10:K16")
+m_Bmi1REP_GAPDH <- read_excel("qPCR_Results.xlsx", sheet = "m_Bmi1 REP", range = "B10:K16")
+m_Cyp24a1REP_GAPDH <- read_excel("qPCR_Results.xlsx", sheet = "m_Cyp24a1 REP", range = "B10:K16")
+m_Bcl2REP_GAPDH <- read_excel("qPCR_Results.xlsx", sheet = "m_Bcl2 REP", range = "B10:K16")
+m_Ki67REP_GAPDH <- read_excel("qPCR_Results.xlsx", sheet = "m_Ki67 REP", range = "B10:K16")
+m_Caspn3REP_GAPDH <- read_excel("qPCR_Results.xlsx", sheet = "m_Caspn3 REP", range = "B10:K16")
+m_Fgfbp1REP_GAPDH <- read_excel("qPCR_Results.xlsx", sheet = "m_Fgfbp1 REP", range = "B10:K16")
+m_Mex3aREP_GAPDH <- read_excel("qPCR_Results.xlsx", sheet = "m_Mex3a REP", range = "B10:K16")
+m_Mex3aREP_GAPDH_2 <- read_excel("qPCR_Results.xlsx", sheet = "m_Mex3a REP (2)", range = "B10:K16")
 
-m_Msi1REP_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Msi1 REP", range = "N10:W16")
-m_Lgr5REP_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Lgr5 REP", range = "N10:W16")
-m_Bmi1REP_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Bmi1 REP", range = "N10:W16")
-m_Cyp24a1REP_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Cyp24a1 REP", range = "N10:W16")
-m_Bcl2REP_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Bcl2 REP", range = "N10:W16")
-m_Ki67REP_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Ki67 REP", range = "N10:W16")
-m_Caspn3REP_Ct <- read_excel("2023-12-05_ALI_mColon__huCYP_huALDH_huCYP24A1.xlsx", sheet = "m_Caspn3 REP", range = "N10:W16")
+m_Msi1REP_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Msi1 REP", range = "N10:W16")
+m_Lgr5REP_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Lgr5 REP", range = "N10:W16")
+m_Bmi1REP_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Bmi1 REP", range = "N10:W16")
+m_Cyp24a1REP_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Cyp24a1 REP", range = "N10:W16")
+m_Bcl2REP_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Bcl2 REP", range = "N10:W16")
+m_Ki67REP_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Ki67 REP", range = "N10:W16")
+m_Caspn3REP_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Caspn3 REP", range = "N10:W16")
+m_Fgfbp1REP_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Fgfbp1 REP", range = "N10:W16")
+m_Mex3aREP_Ct <- read_excel("qPCR_Results.xlsx", sheet = "m_Mex3a REP", range = "N10:W16")
+m_Mex3aREP_Ct_2 <- read_excel("qPCR_Results.xlsx", sheet = "m_Mex3a REP (2)", range = "N10:W16")
 
 
 library(tidyr)
@@ -98,6 +114,18 @@ Caspn3_exprs <- m_Caspn3REP_2_neg_del_Ct |>
 tibble::rownames_to_column("Group") |> 
   tidyr::pivot_longer(cols=!Group, names_to = "Samples", values_to = "neg_del_Ct")
 
+Fgfbp1_exprs <- m_Fgfbp1REP_2_neg_del_Ct |>
+tibble::rownames_to_column("Group") |> 
+  tidyr::pivot_longer(cols=!Group, names_to = "Samples", values_to = "neg_del_Ct")
+
+Mex3a_exprs <- m_Mex3aREP_2_neg_del_Ct |>
+tibble::rownames_to_column("Group") |> 
+  tidyr::pivot_longer(cols=!Group, names_to = "Samples", values_to = "neg_del_Ct")
+
+Mex3a_exprs_2 <- m_Mex3aREP_2_neg_del_Ct_2 |>
+tibble::rownames_to_column("Group") |> 
+  tidyr::pivot_longer(cols=!Group, names_to = "Samples", values_to = "neg_del_Ct")
+
 # Remove values equal to NA
 Msi1_exprs <- Msi1_exprs[!is.na(Msi1_exprs$neg_del_Ct),]
 Lgr5_exprs <- Lgr5_exprs[!is.na(Lgr5_exprs$neg_del_Ct),]
@@ -106,6 +134,9 @@ Cyp24a1_exprs <- Cyp24a1_exprs[!is.na(Cyp24a1_exprs$neg_del_Ct),]
 Bcl2_exprs <- Bcl2_exprs[!is.na(Bcl2_exprs$neg_del_Ct),]
 Ki67_exprs <- Ki67_exprs[!is.na(Ki67_exprs$neg_del_Ct),]
 Caspn3_exprs <- Caspn3_exprs[!is.na(Caspn3_exprs$neg_del_Ct),]
+Fgfbp1_exprs <- Fgfbp1_exprs[!is.na(Fgfbp1_exprs$neg_del_Ct),]
+Mex3a_exprs <- Mex3a_exprs[!is.na(Mex3a_exprs$neg_del_Ct),]
+Mex3a_exprs_2 <- Mex3a_exprs_2[!is.na(Mex3a_exprs_2$neg_del_Ct),]
 
 library(ggpubr)
 library(ggplot2)
@@ -181,7 +212,7 @@ library(ggplot2)
 
 # ggsave("Caspn3_relative_Expression.png")
 
-listOfGEI <- list("Msi1"=Msi1_exprs, "Lgr5"=Lgr5_exprs, "Bmi1"=Bmi1_exprs, "Cyp24a1"=Cyp24a1_exprs, "Bcl2"=Bcl2_exprs, "Ki67"=Ki67_exprs, "Casp3"=Caspn3_exprs)
+listOfGEI <- list("Msi1"=Msi1_exprs, "Lgr5"=Lgr5_exprs, "Bmi1"=Bmi1_exprs, "Cyp24a1"=Cyp24a1_exprs, "Bcl2"=Bcl2_exprs, "Ki67"=Ki67_exprs, "Casp3"=Caspn3_exprs, "Fgfbp1"=Fgfbp1_exprs, "Mex3a"=Mex3a_exprs, "Mex3a_2" = Mex3a_exprs_2)
 
 library("stringr")
 
@@ -207,7 +238,7 @@ for (i in seq_along(listOfGEI)) {
 }
 
 
-# sapply(as.integer((as.integer(sapply(Msi1_exprs$neg_del_Ct, str_sub, -1, -1)) - 1)/ 3), backPaste, "color_")
+sapply(as.integer((as.integer(sapply(Msi1_exprs$neg_del_Ct, str_sub, -1, -1)) - 1)/ 3), backPaste, "color_")
 
 for (i in seq_along(listOfGEI)) {
   ggplot(as.data.frame(listOfGEI[[i]]), aes(Group, neg_del_Ct)) +
@@ -250,11 +281,13 @@ Cyp24a1_exprs$color <- sapply(mapGroup(as.integer(sapply(Cyp24a1_exprs$Samples, 
 Bcl2_exprs$color <- sapply(mapGroup(as.integer(sapply(Bcl2_exprs$Samples, str_sub, -1, -1)), teqRep), backPaste, "color_")
 Ki67_exprs$color <- sapply(mapGroup(as.integer(sapply(Ki67_exprs$Samples, str_sub, -1, -1)), teqRep), backPaste, "color_")
 Caspn3_exprs$color <- sapply(mapGroup(as.integer(sapply(Caspn3_exprs$Samples, str_sub, -1, -1)), teqRep), backPaste, "color_")
-
+Fgfbp1_exprs$color <- sapply(mapGroup(as.integer(sapply(Fgfbp1_exprs$Samples, str_sub, -1, -1)), teqRep), backPaste, "color_")
+Mex3a_exprs$color <- sapply(mapGroup(as.integer(sapply(Mex3a_exprs$Samples, str_sub, -1, -1)), teqRep), backPaste, "color_")
+Mex3a_exprs_2$color <- sapply(mapGroup(as.integer(sapply(Mex3a_exprs_2$Samples, str_sub, -1, -1)), teqRep), backPaste, "color_")
 
 # Remove outliers from the data
 # Remove DSS ALDH color2 with the higest value in Lgr5
-Lgr5_exprs <- Lgr5_exprs[!(Lgr5_exprs$neg_del_Ct == max(Lgr5_exprs$neg_del_Ct) & Lgr5_exprs$color == "color_2"),]
+Lgr5_exprs <- Lgr5_exprs[!(Lgr5_exprs$neg_del_Ct == max(Lgr5_exprs$neg_del_Ct) & Lgr5_exprs$color == "color_2" & Lgr5_exprs$Group == "DSS ALDH"),]
 
 # All samples from color_2 in DSS in Cyp24a1, color_1 in DSS CYP in Cyp24a1, color_2 in  NO DSS in Cyp24a1 will be removed
 Cyp24a1_exprs <- Cyp24a1_exprs[!(Cyp24a1_exprs$color == "color_2" & Cyp24a1_exprs$Group == "DSS"),]
@@ -264,10 +297,15 @@ Cyp24a1_exprs <- Cyp24a1_exprs[!(Cyp24a1_exprs$color == "color_2" & Cyp24a1_expr
 # We will remove DSS color 2 as outlier in Bmi1
 Bmi1_exprs <- Bmi1_exprs[!(Bmi1_exprs$color == "color_2" & Bmi1_exprs$Group == "DSS"),]
 
-# We will remove the highest value of color_2 in DSS 1981 in Bcl2, the highest value of color_2 in DSS MAC in Bcl2, the highest value of color2 in no dss in Bcl2 and all of color_3 in DSS MAC in Bcl2
-Bcl2_exprs <- Bcl2_exprs[!(Bcl2_exprs$color == "color_2" & Bcl2_exprs$Group == "DSS 1981"),]
-Bcl2_exprs <- Bcl2_exprs[!(Bcl2_exprs$color == "color_2" & Bcl2_exprs$Group == "DSS MAC"),]
-Bcl2_exprs <- Bcl2_exprs[!(Bcl2_exprs$color == "color_2" & Bcl2_exprs$Group == "NO DSS"),]
+# We will remove the point with highest value of "neg_del_Ct" in color_2 in DSS 1981 in Bcl2, the highest value of "neg_del_Ct" of color_2 in DSS MAC in Bcl2, the highest value of "neg_del_Ct" of color2 in no dss in Bcl2 and all of color_3 in DSS MAC in Bcl2
+# Bcl2_exprs <- Bcl2_exprs[!(Bcl2_exprs$color == "color_2" & Bcl2_exprs$Group == "DSS 1981"),]
+# Bcl2_exprs <- Bcl2_exprs[!(Bcl2_exprs$color == "color_2" & Bcl2_exprs$Group == "DSS MAC"),]
+# Bcl2_exprs <- Bcl2_exprs[!(Bcl2_exprs$color == "color_2" & Bcl2_exprs$Group == "NO DSS"),]
+# Bcl2_exprs <- Bcl2_exprs[!(Bcl2_exprs$color == "color_3" & Bcl2_exprs$Group == "DSS MAC"),]
+
+Bcl2_exprs <- Bcl2_exprs[!(Bcl2_exprs$color == "color_2" & Bcl2_exprs$Group == "DSS 1981" & Bcl2_exprs$neg_del_Ct == max(Bcl2_exprs[(Bcl2_exprs$color == "color_2" & Bcl2_exprs$Group == "DSS 1981"),]$neg_del_Ct)),]
+Bcl2_exprs <- Bcl2_exprs[!(Bcl2_exprs$color == "color_2" & Bcl2_exprs$Group == "DSS MAC" & Bcl2_exprs$neg_del_Ct == max(Bcl2_exprs[(Bcl2_exprs$color == "color_2" & Bcl2_exprs$Group == "DSS MAC"),]$neg_del_Ct)),]
+Bcl2_exprs <- Bcl2_exprs[!(Bcl2_exprs$color == "color_2" & Bcl2_exprs$Group == "NO DSS" & Bcl2_exprs$neg_del_Ct == max(Bcl2_exprs[(Bcl2_exprs$color == "color_2" & Bcl2_exprs$Group == "NO DSS"),]$neg_del_Ct)),]
 Bcl2_exprs <- Bcl2_exprs[!(Bcl2_exprs$color == "color_3" & Bcl2_exprs$Group == "DSS MAC"),]
 
 # We will remove Color 3 in DSS Mac in Ki67 and the higest values of color 2 in NO DSS in Ki67
@@ -277,8 +315,26 @@ Ki67_exprs <- Ki67_exprs[!(Ki67_exprs$color == "color_2" & Ki67_exprs$Group == "
 # Remove color_2 in DSS from Caspn3
 Caspn3_exprs <- Caspn3_exprs[!(Caspn3_exprs$color == "color_2" & Caspn3_exprs$Group == "DSS"),]
 
+# Will remove color 2 in DSS from MEx3a as outlier
+Mex3a_exprs <- Mex3a_exprs[!(Mex3a_exprs$color == "color_2" & Mex3a_exprs$Group == "DSS"),]
+# Mex3a_exprs <- Mex3a_exprs[!(Mex3a_exprs$color == "color_2" & Mex3a_exprs$Group == "DSS CYP"),]
 
-listOfGEI <- list("Msi1"=Msi1_exprs, "Lgr5"=Lgr5_exprs, "Bmi1"=Bmi1_exprs, "Cyp24a1"=Cyp24a1_exprs, "Bcl2"=Bcl2_exprs, "Ki67"=Ki67_exprs, "Casp3"=Caspn3_exprs)
+# Remove the highest value color 1 in DSS CYP in mex3a
+Mex3a_exprs <- Mex3a_exprs[!(Mex3a_exprs$color == "color_1" & Mex3a_exprs$Group == "DSS CYP" & Mex3a_exprs$neg_del_Ct == max(Mex3a_exprs[(Mex3a_exprs$color == "color_1" & Mex3a_exprs$Group == "DSS CYP"),]$neg_del_Ct)),]
+Mex3a_exprs <- Mex3a_exprs[!(Mex3a_exprs$color == "color_2" & Mex3a_exprs$Group == "NO DSS" ),]
+
+
+# Remove the highest value color 1 in dss in fgfbp1 and the highest value color 3 in dss cyp in fgfbp1
+Fgfbp1_exprs <- Fgfbp1_exprs[!(Fgfbp1_exprs$color == "color_1" & Fgfbp1_exprs$Group == "DSS" & Fgfbp1_exprs$neg_del_Ct == max(Fgfbp1_exprs[(Fgfbp1_exprs$color == "color_1" & Fgfbp1_exprs$Group == "DSS"),]$neg_del_Ct)),]
+Fgfbp1_exprs <- Fgfbp1_exprs[!(Fgfbp1_exprs$color == "color_3" & Fgfbp1_exprs$Group == "DSS CYP" & Fgfbp1_exprs$neg_del_Ct == max(Fgfbp1_exprs[(Fgfbp1_exprs$color == "color_3" & Fgfbp1_exprs$Group == "DSS CYP"),]$neg_del_Ct)),]
+
+# Remove color 2 in MEx3a_2 as outlier
+Mex3a_exprs_2 <- Mex3a_exprs_2[!(Mex3a_exprs_2$color == "color_2" & Mex3a_exprs_2$Group == "NO DSS" ),]
+Mex3a_exprs_2 <- Mex3a_exprs_2[!(Mex3a_exprs_2$color == "color_2" & Mex3a_exprs_2$Group == "DSS" ),]
+Mex3a_exprs_2 <- Mex3a_exprs_2[!(Mex3a_exprs_2$color == "color_2" & Mex3a_exprs_2$Group == "DSS CYP" ),]
+
+
+listOfGEI <- list("Msi1"=Msi1_exprs, "Lgr5"=Lgr5_exprs, "Bmi1"=Bmi1_exprs, "Cyp24a1"=Cyp24a1_exprs, "Bcl2"=Bcl2_exprs, "Ki67"=Ki67_exprs, "Casp3"=Caspn3_exprs, "Fgfbp1"=Fgfbp1_exprs, "Mex3a"=Mex3a_exprs, "Mex3a_2" = Mex3a_exprs_2)
 
 for (i in seq_along(listOfGEI)) {
   ggplot(as.data.frame(listOfGEI[[i]]), aes(Group, neg_del_Ct)) +
@@ -307,7 +363,7 @@ for(i in seq_along(listOfGEI)) {
     res.anova <- aov(neg_del_Ct ~ Group, data=listOfGEI[[i]])
     # print(summary(res.anova))
     posthoc <- TukeyHSD(res.anova)
-    print(filter(as.data.frame(posthoc$Group), `p adj` < 0.05))
+    print((as.data.frame(posthoc$Group)))
 }
 
 library(rstatix)
